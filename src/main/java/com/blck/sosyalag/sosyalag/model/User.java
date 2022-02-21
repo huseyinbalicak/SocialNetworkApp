@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +31,18 @@ public class User {
     private Long id;
     private String email;
     private String password;
+    private boolean enabled;
+    private String fullName;
+    private String education;
+    private String experience;
+    private String skills;
     private String username;
+    public String followers;
+    public String following;
+    public int followingCount;
+    public int followerCount;
+    @Transient
+    private String confirmPassword;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

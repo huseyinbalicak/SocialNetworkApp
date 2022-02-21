@@ -25,7 +25,7 @@ public class PostService {
     }
 
     public void save(Post post) {
-         postRepository.save(post);
+        postRepository.save(post);
     }
 
 

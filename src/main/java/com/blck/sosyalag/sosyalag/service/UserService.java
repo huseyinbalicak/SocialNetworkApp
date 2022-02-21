@@ -1,6 +1,6 @@
 package com.blck.sosyalag.sosyalag.service;
 
-import com.blck.sosyalag.sosyalag.model.SocialAgRuntimeException;
+import com.blck.sosyalag.sosyalag.model.SocialNetworkRuntimeException;
 import com.blck.sosyalag.sosyalag.model.User;
 import com.blck.sosyalag.sosyalag.repo.UserRepo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,7 +31,7 @@ public class UserService {
         if (optional.isPresent()) {
             user = optional.get();
         } else {
-            throw new SocialAgRuntimeException(" user not found for id :: " + id);
+            throw new SocialNetworkRuntimeException(" user not found for id :: " + id);
         }
         return user;
     }
@@ -43,5 +43,18 @@ public class UserService {
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
+
+
+    public User fetchUserByEmail(String email)
+    {
+        return userRepository.getUserByEmail(email);
+    }
+
+    public List<User> finByUserName(String fullName) {
+        return userRepository.findByFullName(fullName);
+    }
+
+
+
 
 }

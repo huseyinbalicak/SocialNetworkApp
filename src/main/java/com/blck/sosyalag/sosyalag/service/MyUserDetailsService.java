@@ -1,6 +1,6 @@
 package com.blck.sosyalag.sosyalag.service;
 
-import com.blck.sosyalag.sosyalag.model.SocialAgRuntimeException;
+import com.blck.sosyalag.sosyalag.model.SocialNetworkRuntimeException;
 import com.blck.sosyalag.sosyalag.model.User;
 import com.blck.sosyalag.sosyalag.model.UserPrincipal;
 import com.blck.sosyalag.sosyalag.repo.UserRepo;
@@ -24,7 +24,7 @@ public class MyUserDetailsService implements UserDetailsService {
         User user = userRepository.findByUsername(username);
 
         if (user == null) {
-            throw new SocialAgRuntimeException(" user not found");
+            throw new SocialNetworkRuntimeException(" user not found");
         }
 
         return new UserPrincipal(user);
